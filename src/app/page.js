@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { ChevronRight, Video, Zap, Globe, Code, Send, GitBranch, Link2, Coffee } from 'lucide-react';
+import { ChevronRight, Video, Zap, Globe, Code, Send, GitBranch, Link2, Coffee, Mail, Phone, MapPin } from 'lucide-react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Box, Button, TextField, Typography, Card, CardContent, AppBar, Toolbar, Container, Grid, IconButton, Link, Paper } from '@mui/material';
+import { Box, Button, TextField, Typography, Card, CardContent, AppBar, Toolbar, Container, Grid, IconButton, Link, Paper, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -22,6 +22,8 @@ const Header = () => (
     <Toolbar className="container mx-auto px-4 flex justify-between items-center">
       <Typography variant="h6" component="div">ClipCraft AI</Typography>
       <Box>
+        <Button color="inherit" href="#about">About Us</Button>
+        <Button color="inherit" href="#contact">Contact</Button>
         <SignedOut>
           <SignInButton mode="modal">
             <Button color="inherit">Sign In</Button>
@@ -49,9 +51,28 @@ const Hero = () => (
         color="secondary"
         size="large"
         endIcon={<ChevronRight />}
+        href="https://colab.research.google.com/#fileId=https%3A//huggingface.co/multimodalart/diffusers_text_to_video/blob/main/Text_to_Video_with_Diffusers.ipynb"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Start Crafting
       </Button>
+      <Box mt={6}>
+        <Typography variant="h6" gutterBottom>
+          See AI-generated video in action:
+        </Typography>
+        <Box className="aspect-w-16 aspect-h-9">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/ysz5S6PUM-U"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </Box>
+      </Box>
     </Container>
   </Box>
 );
@@ -220,25 +241,131 @@ const Pricing = () => (
   </Box>
 );
 
+const AboutUs = () => (
+  <Box id="about" className="py-20 bg-gray-50">
+    <Container maxWidth="lg">
+      <Typography variant="h3" align="center" gutterBottom>
+        About ClipCraft AI
+      </Typography>
+      <Grid container spacing={4} alignItems="center">
+        <Grid item xs={12} md={6}>
+          <Typography variant="h5" gutterBottom>
+            Revolutionizing Content Creation
+          </Typography>
+          <Typography variant="body1" paragraph>
+            At ClipCraft AI, we're pushing the boundaries of artificial intelligence to transform the way digital content is created. Our team of world-class AI researchers and software engineers is dedicated to developing cutting-edge technology that empowers creators and businesses alike.
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+            Our Mission
+          </Typography>
+          <Typography variant="body1" paragraph>
+            We're on a mission to democratize high-quality video content creation, making it accessible to everyone from individual creators to large enterprises. By harnessing the power of AI, we're not just changing the game – we're redefining it.
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+            Join Our Team
+          </Typography>
+          <Typography variant="body1" paragraph>
+            We're always looking for talented individuals who are passionate about AI and content creation. If you're excited about shaping the future of digital media, we want to hear from you. Check out our open positions and become part of our innovative team!
+          </Typography>
+          <Button variant="contained" color="primary" href="#contact">
+            View Open Positions
+          </Button>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <img src="/team-collaboration.jpg" alt="ClipCraft AI Team" style={{ width: '100%', borderRadius: '8px' }} />
+        </Grid>
+      </Grid>
+    </Container>
+  </Box>
+);
+
+const ContactUs = () => (
+  <Box id="contact" className="py-20 bg-gray-100">
+    <Container maxWidth="lg">
+      <Typography variant="h3" align="center" gutterBottom>
+        Contact Us
+      </Typography>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h5" gutterBottom>
+            Get in Touch
+          </Typography>
+          <Typography variant="body1" paragraph>
+            We'd love to hear from you! Whether you're interested in our product, looking for a career opportunity, or just want to learn more about ClipCraft AI, don't hesitate to reach out.
+          </Typography>
+          <List>
+            <ListItem>
+              <ListItemIcon>
+                <Mail />
+              </ListItemIcon>
+              <ListItemText primary="Email" secondary="careers@clipcraftai.com" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <Phone />
+              </ListItemIcon>
+              <ListItemText primary="Phone" secondary="+1 (555) 123-4567" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <MapPin />
+              </ListItemIcon>
+              <ListItemText primary="Address" secondary="123 AI Boulevard, San Francisco, CA 94105" />
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper elevation={3} sx={{ p: 3 }}>
+            <Typography variant="h5" gutterBottom>
+              Send Us a Message
+            </Typography>
+            <form>
+              <TextField fullWidth margin="normal" label="Name" variant="outlined" />
+              <TextField fullWidth margin="normal" label="Email" variant="outlined" />
+              <TextField fullWidth margin="normal" label="Subject" variant="outlined" />
+              <TextField fullWidth margin="normal" label="Message" variant="outlined" multiline rows={4} />
+              <Button variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+                Send Message
+              </Button>
+            </form>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
+  </Box>
+);
+
 const Footer = () => (
   <Box component="footer" className="bg-indigo-900 text-white py-12">
     <Container maxWidth="lg">
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <Typography variant="h6" gutterBottom>
             ClipCraft AI
           </Typography>
           <Typography variant="body2">
-            AI-powered video clips for all your social media needs.
+            Revolutionizing content creation with AI.
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={6} container justifyContent="flex-end">
-        <IconButton color="inherit" component="a" href="https://github.com" target="_blank">
-          <GitBranch />
-        </IconButton>
-        <IconButton color="inherit" component="a" href="https://linkedin.com" target="_blank">
-          <Link2 />
-        </IconButton>
+        <Grid item xs={12} sm={4}>
+          <Typography variant="h6" gutterBottom>
+            Quick Links
+          </Typography>
+          <Link href="#" color="inherit" display="block">Home</Link>
+          <Link href="#about" color="inherit" display="block">About Us</Link>
+          <Link href="#contact" color="inherit" display="block">Contact</Link>
+          <Link href="#" color="inherit" display="block">Careers</Link>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Typography variant="h6" gutterBottom>
+            Connect With Us
+          </Typography>
+          <IconButton color="inherit" component="a" href="https://github.com/tamzid2001/bookish-octo-barnacle" target="_blank">
+            <GitBranch />
+          </IconButton>
+          <IconButton color="inherit" component="a" href="https://www.linkedin.com/in/tamzid-ullah-8a50a2234/" target="_blank">
+            <Link2 />
+          </IconButton>
         </Grid>
       </Grid>
       <Box mt={4} pt={4} borderTop={1} borderColor="rgba(255,255,255,0.1)">
@@ -253,7 +380,7 @@ const Footer = () => (
 const SupportDeveloper = () => (
   <Box textAlign="center" my={4}>
     <Link
-      href="https://donate.stripe.com"
+      href="https://donate.stripe.com/4gwcOCg7abFQatO3cc"
       target="_blank"
       rel="noopener noreferrer"
       color="textSecondary"
@@ -277,10 +404,14 @@ export default function Home() {
             <SignedOut>
               <Hero />
               <Features />
+              <AboutUs />
+              <ContactUs />
             </SignedOut>
             <SignedIn>
               <Demo />
               <Pricing />
+              <AboutUs />
+              <ContactUs />
             </SignedIn>
           </Box>
           <SupportDeveloper />
