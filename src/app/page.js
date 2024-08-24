@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { ChevronRight, Video, Zap, Globe, Code, Send, GitHub, LinkedIn, Coffee } from 'lucide-react';
+import { ChevronRight, Video, Zap, Globe, Code, Send, GitBranch, Link2, Coffee } from 'lucide-react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Box, Button, TextField, Typography, Card, CardContent, AppBar, Toolbar, Container, Grid, IconButton, Link, Paper } from '@mui/material';
 
@@ -233,12 +233,12 @@ const Footer = () => (
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6} container justifyContent="flex-end">
-          <IconButton color="inherit" component="a" href="https://github.com" target="_blank">
-            <GitHub />
-          </IconButton>
-          <IconButton color="inherit" component="a" href="https://linkedin.com" target="_blank">
-            <LinkedIn />
-          </IconButton>
+        <IconButton color="inherit" component="a" href="https://github.com" target="_blank">
+          <GitBranch />
+        </IconButton>
+        <IconButton color="inherit" component="a" href="https://linkedin.com" target="_blank">
+          <Link2 />
+        </IconButton>
         </Grid>
       </Grid>
       <Box mt={4} pt={4} borderTop={1} borderColor="rgba(255,255,255,0.1)">
